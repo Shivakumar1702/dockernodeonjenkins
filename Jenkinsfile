@@ -1,18 +1,13 @@
 pipeline {
-    agent {
-        docker {
-            image 'maven:latest'
-        }
-    }
-
-    stages {
-        stage ('build') {
-            environment {
+        agent { docker { image 'maven:3.3.3' } }
+        stages {
+            stage('build') {
+                environment {
                   HOME="."
                 }
-            steps {
-                sh 'mvn -v'
-            }
+                steps {
+                    sh 'mvn --version'
+                }
+           }
         }
     }
-}
