@@ -1,10 +1,12 @@
 pipeline {
-        agent { docker { image 'maven:3.3.3' } }
+        agent { 
+            docker { 
+                image 'maven:3.3.3'
+                customWorkspace 'C:\\'
+                } 
+            }
         stages {
             stage('build') {
-                environment {
-                  HOME="."
-                }
                 steps {
                     sh 'mvn --version'
                 }
